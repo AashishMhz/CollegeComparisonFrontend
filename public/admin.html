@@ -65,24 +65,27 @@
             </nav>
         </div>
     </header>
-    <!-- Navbar ends -->
+    <!-- Navbar ends --> 
 
     <div class="container">
     <div class="table-section">
         <div class="sort-section text-center">
-            <h2>Products</h2>
+            <h2>College</h2>
             
             <a class="btn btn-primary rounded-0 add-btn" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i>Add Products</a>
         </div>
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Product Type</th>
-                        <th scope="col">Image</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">location</th>
+                      <th scope="col">total_student</th>
+                      <th scope="col">affiliation</th>
+                      <th scope="col">desc</th>
+                      <th scope="col">courses</th>
+                      <th scope="col">credit_hours</th>
+                      <th scope="col">Fees</th>
+                      <th scope="col">Scholarship_criteria</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                       </tr>
@@ -99,7 +102,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Add College</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -111,31 +114,71 @@
                   type="text"
                   class="form-control"
                   name="name"
-                  id="name"
-                  placeholder="Product Name"
+                  id="college_name"
+                  placeholder="college_name"
                 />
                 <br />
                 <input
                 type="text"
                 class="form-control" 
                 name="price"
-                id="price"
-                placeholder="Price"
+                id="location"
+                placeholder="location"
               />
               <br/>
                 <input
                   type="text"
                   class="form-control"
                   name="desc"
-                  id="desc"
-                  placeholder="Description"
+                  id="total_student"
+                  placeholder="total_student"
                 />
                 <br/>
                 <input
                 type="Number"
                 class="form-control" 
                 name="quantity"
-                id="quantity"
+                id="affiliation"
+                placeholder="Quantity"
+              />
+              <br/>
+              <input
+                type="Number"
+                class="form-control" 
+                name="quantity"
+                id="desc"
+                placeholder="Quantity"
+              />
+              <br/>
+              <input
+                type="Number"
+                class="form-control" 
+                name="quantity"
+                id="courses"
+                placeholder="Quantity"
+              />
+              <br/>
+              <input
+                type="Number"
+                class="form-control" 
+                name="quantity"
+                id="credit_hours"
+                placeholder="Quantity"
+              />
+              <br/>
+              <input
+                type="Number"
+                class="form-control" 
+                name="quantity"
+                id="Fees"
+                placeholder="Quantity"
+              />
+              <br/>
+              <input
+                type="Number"
+                class="form-control" 
+                name="quantity"
+                id="Scholarship_criterias"
                 placeholder="Quantity"
               />
               <br/>
@@ -150,7 +193,7 @@
       
             </div>
             <div class="modal-footer text-center">
-              <button type="submit" class="btn btn-primary" id="add-product">
+              <button type="submit" class="btn btn-primary" id="add-college">
                 Add
               </button>
             </div>

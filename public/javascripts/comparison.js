@@ -25,32 +25,26 @@ $(function() {
         college.Scholarship_criteria +
         "</td><td>" 
         ;
-      oneRow +=
-        '<td><button type="button" class="btn btn-danger delete" data-id=' +
-        college._id +
-        '><i class = "fas fa-trash-alt"></i>Delete</button></td>' +
-        '<td> <button type = "button" class ="btn btn-success edit" data-toggle="modal" data-target="#EditModal" data-id = ' +
-        college._id +
-        '><i class = "fas fa-edit"></i>Edit</td></tr>';
+     
       return oneRow;
     }
   
     
-    $.ajax({
-      type: "GET",
-      url: base_url + "college",
-      success: function(colleges) {
-        console.log(colleges);
-        let myRows = [];
-        $.each(colleges, function(index, college) {
-          myRows.push(rowTemplate(college));
-        });
-        tblBody.append(myRows);
-      },
-      error: function() {
-        alert("Something went wrong!");
-      }
-    });
+    // $.ajax({
+    //   type: "GET",
+    //   url: base_url + "college",
+    //   success: function(colleges) {
+    //     console.log(colleges);
+    //     let myRows = [];
+    //     $.each(colleges, function(index, college) {
+    //       myRows.push(rowTemplate(college));
+    //     });
+    //     tblBody.append(myRows);
+    //   },
+    //   error: function() {
+    //     alert("Something went wrong!");
+    //   }
+    // });
     //  $.ajax({
     //   type: "GET",
     //   url: base_url + "product_type",
@@ -67,22 +61,22 @@ $(function() {
     //   }
     // });
 
-    // $.ajax({
-    //   type: "GET",
-    //   url: base_url + "product_type",
-    //   success: function(productTypes) {
-    //     $.each(productTypes, function(index, productType) {
-    //       console.log(productTypes);
-    //       var productType_data =
-    //         "<option value=" +
-    //         productType._id +
-    //         ">" +
-    //         productType.name +
-    //         "</option>";
-    //       $("#eproductType").append(productType_data);
-    //     });
-    //   }
-    // });
+    $.ajax({
+      type: "GET",
+      url: base_url + "college",
+      success: function(college) {
+        $.each(college, function(index, college) {
+          console.log(college);
+          var College_data =
+            "<option value=" +
+            college._id +
+            ">" +
+            college.college_name +
+            "</option>";
+          $("#college").append(College_data);
+        });
+      }
+    });
   
     // $("#fileToUpload").on("change", function() {
     //   let formData = new FormData();
@@ -158,6 +152,23 @@ $(function() {
           alert("Fill all the form fields!");
         }
       });
+    });
+
+    $("#college").change(function(){
+        var college_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: base_url + "college/" + college_id,
+            success: function(colleges) {
+              console.log(colleges);
+              let myRows = [];
+                myRows.push(rowTemplate(colleges));
+              tblBody.append(myRows);
+            },
+            error: function() {
+              alert("Something went wrong!");
+            }
+          });
     });
   
     $("#remove-heroes").on("click", function() {

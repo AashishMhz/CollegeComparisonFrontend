@@ -70,9 +70,9 @@
     <div class="container">
     <div class="table-section">
         <div class="sort-section text-center">
-            <h2>Products</h2>
+            <h2>Colleges</h2>
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-2">
                         <nav class="navbar navbar-expand-lg bg-primary">
                           <div class="container">
@@ -87,7 +87,7 @@
                                       Dropdown
                                     </p>
                                   </a>
-                                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="college">
                                     <a class="dropdown-item" href="#">Softwarica</a>
                                     <a class="dropdown-item" href="#">British</a>
                                     <a class="dropdown-item" href="#">Islington</a>
@@ -98,20 +98,25 @@
                           </div>
                         </nav>
                       </div>
-                      </div>
+                      </div> -->
+
+                      <select  class="form-control" id= "college"> 
+                        <option value="0">Select</option>
+                      </select>
 
         
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Scholar</th>
-                        <th scope="col">Courses</th>
-                        <th scope="col">Credit Hour</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                      <th scope="col">Name</th>
+                      <th scope="col">location</th>
+                      <th scope="col">total_student</th>
+                      <th scope="col">affiliation</th>
+                      <th scope="col">desc</th>
+                      <th scope="col">courses</th>
+                      <th scope="col">credit_hours</th>
+                      <th scope="col">Fees</th>
+                      <th scope="col">Scholarship_criteria</th>
                       </tr>
                 </thead>
                 <tbody id="tblbody">
@@ -131,7 +136,7 @@
           <script src="javascripts/owl.carousel.min.js"></script>
           <script src="javascripts/aos.js"></script>
           <script src="javascripts/custom-js.js"></script>
-          <script src="javascripts/admin.js"></script>
+          <script src="javascripts/comparison.js"></script>
           
         </body>
     </html>

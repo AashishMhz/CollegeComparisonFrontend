@@ -890,3 +890,22 @@ a.navbar-brand img {
   margin-left: 347px;
   width: 120%;
 }
+
+.comp-clz {
+  display: flex;
+}
+
+.comp-clz thead th {
+  display: block;
+    padding: 5px 15px;
+    text-align: left;
+}
+
+.comp-clz tbody {
+    text-align: left;
+}
+
+.comp-clz tbody td {
+    display: block;
+    padding: 5px 15px;
+}

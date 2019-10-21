@@ -84,56 +84,55 @@ $(function() {
     //   }
     // });
   
-    // $("#fileToUpload").on("change", function() {
-    //   let formData = new FormData();
-    //   let files = $("#fileToUpload").get(0).files;
-    //   if (files.length > 0) {
-    //     formData.append("imageFile", files[0]);
-    //   }
-    //   // $("#add-hero").prop("disabled", true);
-    //   $.ajax({
-    //     type: "POST",
-    //     url: base_url + "upload",
-    //     contentType: false,
-    //     cache: false,
-    //     processData: false,
-    //     data: formData,
-    //     success: function(data) {
-    //       imageFile = data.filename;
-    //       // $("#add-hero").prop("disabled", false);
-    //     },
-    //     error: function() {
-    //       alert("Image upload failed!");
-    //     }
-    //   });
-    // });
+    $("#fileToUpload").on("change", function() {
+      let formData = new FormData();
+      let files = $("#fileToUpload").get(0).files;
+      if (files.length > 0) {
+        formData.append("imageFile", files[0]);
+      }
+      // $("#add-hero").prop("disabled", true);
+      $.ajax({
+        type: "POST",
+        url: base_url + "upload",
+        contentType: false,
+        cache: false,
+        processData: false,
+        data: formData,
+        success: function(data) {
+          imageFile = data.filename;
+          // $("#add-hero").prop("disabled", false);
+        },
+        error: function() {
+          alert("Image upload failed!");
+        }
+      });
+    });
     
-    // $("#efileToUpload").on("change", function() {
-    //   let formData = new FormData();
-    //   let files = $("#fileToUpload").get(0).files;
-    //   if (files.length > 0) {
-    //     formData.append("imageFile", files[0]);
-    //   }
-    //   // $("#add-hero").prop("disabled", true);
-    //   $.ajax({
-    //     type: "POST",
-    //     url: base_url + "upload",
-    //     contentType: false,
-    //     cache: false,
-    //     processData: false,
-    //     data: formData,
-    //     success: function(data) {
-    //       imageFile = data.filename;
-    //       // $("#add-hero").prop("disabled", false);
-    //     },
-    //     error: function() {
-    //       alert("Image upload failed!");
-    //     }
-    //   });
-    // });
+    $("#efileToUpload").on("change", function() {
+      let formData = new FormData();
+      let files = $("#fileToUpload").get(0).files;
+      if (files.length > 0) {
+        formData.append("imageFile", files[0]);
+      }
+      // $("#add-hero").prop("disabled", true);
+      $.ajax({
+        type: "POST",
+        url: base_url + "upload",
+        contentType: false,
+        cache: false,
+        processData: false,
+        data: formData,
+        success: function(data) {
+          imageFile = data.filename;
+          // $("#add-hero").prop("disabled", false);
+        },
+        error: function() {
+          alert("Image upload failed!");
+        }
+      });
+    });
   
     $("#add-college").on("click", function() {
-    
       let college = {
         college_name: $("#college_name").val(),
         location: $("#location").val(),
@@ -143,21 +142,23 @@ $(function() {
         courses: $("#courses").val(),
         credit_hours: $("#credit_hours").val(),
         Fees: $("#Fees").val(),
-        Scholarship_criterias: $("#Scholarship_criterias").val()
+        Scholarship_criteria: $("#Scholarship_criterias").val()
       };
       $.ajax({  
         type: "POST",
         url: base_url + "college",
-        data: product,
+        data: college,
         success: function(college) {
           tblBody.append(rowTemplate(college));
           // imageFile = "";
-          $("#product-form").trigger("reset");
+          $("#college-form").trigger("reset");
+          alert("Successfully added");
+          
         },
         error: function() {
           alert("Fill all the form fields!");
         }
-      });
+      }); 
     });
   
     $("#remove-heroes").on("click", function() {
@@ -182,8 +183,6 @@ $(function() {
       }
     });
 
-    
-  
     tblBody.on("click", ".delete", function() {
       var id = $(this).attr("data-id");
       console.log(id);
@@ -204,16 +203,25 @@ $(function() {
       console.log(id);
       $.ajax({
         type: "GET",
-        url: base_url + "product/" + id,
-        success: function(product) {
-          console.log(product);
-          $("#eid").val(product._id);
-          $("#ename").val(product.product_name);
-          $("#eprice").val(product.product_price);
-          $("#edesc").val(product.product_description);
-          $("#equantity").val(product.quantity);
-          $("#eproductType").val(product.product_type);
-          $("#efileToUpload").val(product.product_image);
+        url: base_url + "college/" + id,
+        success: function(college) {
+          console.log(college);
+          $("#eid").val(college._id);
+          // $("#ename").val(product.product_name);
+          // $("#eprice").val(product.product_price);
+          // $("#edesc").val(product.product_description);
+          // $("#equantity").val(product.quantity);
+          // $("#eproductType").val(product.product_type);
+          // $("#efileToUpload").val(product.product_image);
+           $("#ecollege_name").val(college.college_name),
+           $("#elocation").val(college.location),
+           $("#etotal_student").val(college.total_student),
+           $("#eaffiliation").val(college.affiliation),
+           $("#edesc").val(college.desc),
+           $("#ecourses").val(college.courses),
+           $("#ecredit_hours").val(college.credit_hours),
+           $("#eFees").val(college.Fees),
+           $("#eScholarship_criterias").val(college.Scholarship_criteria)
         },
         error: function() {
           alert("couldn't load the product");
@@ -222,59 +230,65 @@ $(function() {
     });
   
     $("#edit-product").on("click", function() {
-      var id = $("#eid").val();
-      if(imageFile ===""){
-        var image ="";
-        $.ajax({
-          type: "GET",
-          url: base_url + "product/" + id,
-          success: function(product) {
-            alert(" image " + product.product_image);
-            image = product.product_image;
-          },
-          error: function() {
-            alert("couldn't load the product");
-          }
-        });
-        let product = {
-          _id: $("#eid").val(),
-          product_name: $("#ename").val(),
-          product_description: $("#edesc").val(),
-          product_price: $("#eprice").val(),
-          product_image: image,
-          product_type: $("#eproductType").val(),
-          quantity: $("#equantity").val()
-        };
+      // var id = $("#eid").val();
+      // if(imageFile ===""){
+      //   var image ="";
+      //   $.ajax({
+      //     type: "GET",
+      //     url: base_url + "product/" + id,
+      //     success: function(product) {
+      //       alert(" image " + product.product_image);
+      //       image = product.product_image;
+      //     },
+      //     error: function() {
+      //       alert("couldn't load the product");
+      //     }
+      //   });
+      //   let product = {
+      //     _id: $("#eid").val(),
+      //     college_name: $("#ecollege_name").val(),
+      //   location: $("#elocation").val(),
+      //   total_student: $("#etotal_student").val(),
+      //   affiliation: $("#eaffiliation").val(),
+      //   desc: $("#edesc").val(),
+      //   courses: $("#ecourses").val(),
+      //   credit_hours: $("#ecredit_hours").val(),
+      //   Fees: $("#eFees").val(),
+      //   Scholarship_criteria: $("#eScholarship_criterias").val()
+      //   };
         
-        $.ajax({
-          type: "PUT",
-          url: base_url + "product/" + id ,
-          data: product,
-          success: function(product) {
-            imageFile = "";
-            location.reload();
-            alert("successfully edited");
-          },
-          error: function() {
-            alert("Fill all the form fields!");
-          }
-        });
-      }else{
-        let product = {
+      //   $.ajax({
+      //     type: "PUT",
+      //     url: base_url + "product/" + id ,
+      //     data: product,
+      //     success: function(product) {
+      //       imageFile = "";
+      //       location.reload();
+      //       alert("successfully edited");
+      //     },
+      //     error: function() {
+      //       alert("Fill all the form fields!");
+      //     }
+      //   });
+      // }else{
+        let college = {
           _id: $("#eid").val(),
-          product_name: $("#ename").val(),
-          product_description: $("#edesc").val(),
-          product_price: $("#eprice").val(),
-          product_image: imageFile,
-          product_type: $("#eproductType").val(),
-          quantity: $("#equantity").val()
+          college_name: $("#ecollege_name").val(),
+        location: $("#elocation").val(),
+        total_student: $("#etotal_student").val(),
+        affiliation: $("#eaffiliation").val(),
+        desc: $("#edesc").val(),
+        courses: $("#ecourses").val(),
+        credit_hours: $("#ecredit_hours").val(),
+        Fees: $("#eFees").val(),
+        Scholarship_criteria: $("#eScholarship_criterias").val()
         };
         var id = $("#eid").val();
         $.ajax({
           type: "PUT",
-          url: base_url + "product/" + id ,
-          data: product,
-          success: function(product) {
+          url: base_url + "college/" + id ,
+          data: college,
+          success: function(college) {
             imageFile = "";
             location.reload();
             alert("successfully edited");
@@ -283,12 +297,7 @@ $(function() {
             alert("Fill all the form fields!");
           }
         });
-      }
-      
-      
+      // }      
     });
-
-    
-
   });
   

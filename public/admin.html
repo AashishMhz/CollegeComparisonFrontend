@@ -72,7 +72,7 @@
         <div class="sort-section text-center">
             <h2>College</h2>
             
-            <a class="btn btn-primary rounded-0 add-btn" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i>Add Products</a>
+            <a class="btn btn-primary rounded-0 add-btn" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i>Add College</a>
         </div>
             <table class="table table-striped">
                 <thead class="thead-dark">
@@ -109,7 +109,15 @@
             </div>
           
             <div class="modal-body">
-              <form class="form col-sm-6" id="product-form">
+              <form class="form col-sm-6" id="college-form">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  id="college_name"
+                  placeholder="college_name"
+                />
+                <br />
                 <input
                   type="text"
                   class="form-control"
@@ -121,21 +129,21 @@
                 <input
                 type="text"
                 class="form-control" 
-                name="price"
+                name="location"
                 id="location"
                 placeholder="location"
               />
               <br/>
                 <input
-                  type="text"
+                  type="Number"
                   class="form-control"
-                  name="desc"
+                  name="total_student"
                   id="total_student"
                   placeholder="total_student"
                 />
                 <br/>
                 <input
-                type="Number"
+                type="text"
                 class="form-control" 
                 name="affiliation"
                 id="affiliation"
@@ -143,7 +151,7 @@
               />
               <br/>
               <input
-                type="Number"
+                type="text"
                 class="form-control" 
                 name="desc"
                 id="desc"
@@ -151,7 +159,7 @@
               />
               <br/>
               <input
-                type="Number"
+                type="text"
                 class="form-control" 
                 name="courses"
                 id="courses"
@@ -175,17 +183,17 @@
               />
               <br/>
               <input
-                type="Number"
+                type="text"
                 class="form-control" 
                 name="Scholarship_criterias"
                 id="Scholarship_criterias"
                 placeholder="Scholarship_criterias"
               />
               
-                <form enctype="multipart/form-data" id="fileUploadForm">
+                <!-- <form enctype="multipart/form-data" id="fileUploadForm">
                   <input type="file" name="fileToUpload" id="fileToUpload" />
                 </form>
-                <br />
+                <br /> -->
       
             </div>
             <div class="modal-footer text-center">
@@ -209,55 +217,90 @@
             </button>
           </div>
           <div class="modal-body">
-            <form class="form col-sm-6" id="edit-form">
-              <input
-                type="text"
-                class="form-control"
-                name="name"
-                id="eid"
-                placeholder="Product Name"
-              />
-              <br />
-              <input
-                type="text"
-                class="form-control"
-                name="name"
-                id="ename"
-                placeholder="Product Name"
-              />
-              <br />
               <input
               type="text"
-              class="form-control" 
-              name="price"
-              id="eprice"
-              placeholder="Price"
+              class="form-control"
+              name="name"
+              id="eid"
+              placeholder="id"
             />
-            <br/>
-              <input
+            <br />
+            <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  id="ecollege_name"
+                  placeholder="college_name"
+                />
+                <br />
+                <input
                 type="text"
-                class="form-control"
-                name="desc"
-                id="edesc"
-                placeholder="Description"
+                class="form-control" 
+                name="location"
+                id="elocation"
+                placeholder="location"
+              />
+              <br/>
+                <input
+                  type="Number"
+                  class="form-control"
+                  name="total_student"
+                  id="etotal_student"
+                  placeholder="total_student"
+                />
+                <br/>
+                <input
+                type="text"
+                class="form-control" 
+                name="affiliation"
+                id="eaffiliation"
+                placeholder="affiliation"
               />
               <br/>
               <input
-              type="Number"
-              class="form-control" 
-              name="quantity"
-              id="equantity"
-              placeholder="Quantity"
-            />
-            <br/>
-            <select  class="form-control" id= "eproductType"> 
-              <option value="0">Select</option>
-            </select>
-              <br />
+                type="text"
+                class="form-control" 
+                name="desc"
+                id="edesc"
+                placeholder="desc"
+              />
+              <br/>
+              <input
+                type="text"
+                class="form-control" 
+                name="courses"
+                id="ecourses"
+                placeholder="courses"
+              />
+              <br/>
+              <input
+                type="Number"
+                class="form-control" 
+                name="credit_hours"
+                id="ecredit_hours"
+                placeholder="credit_hours"
+              />
+              <br/>
+              <input
+                type="Number"
+                class="form-control" 
+                name="Fees"
+                id="eFees"
+                placeholder="Fees"
+              />
+              <br/>
+              <input
+                type="text"
+                class="form-control" 
+                name="Scholarship_criterias"
+                id="eScholarship_criterias"
+                placeholder="Scholarship_criterias"
+              />
+              <!-- <br />
               <form enctype="multipart/form-data" id="fileUploadForm">
                 <input type="file" name="fileToUpload" id="efileToUpload" />
               </form>
-              <br />
+              <br /> -->
       
           </div>
           <div class="modal-footer text-center">

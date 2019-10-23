@@ -34,6 +34,8 @@ $(function() {
         '><i class = "fas fa-edit"></i>Edit</td></tr>';
       return oneRow;
     }
+
+    
   
     
     $.ajax({
@@ -142,7 +144,8 @@ $(function() {
         courses: $("#courses").val(),
         credit_hours: $("#credit_hours").val(),
         Fees: $("#Fees").val(),
-        Scholarship_criteria: $("#Scholarship_criterias").val()
+        Scholarship_criteria: $("#Scholarship_criterias").val(),
+        College_image:imageFile
       };
       $.ajax({  
         type: "POST",
@@ -150,7 +153,7 @@ $(function() {
         data: college,
         success: function(college) {
           tblBody.append(rowTemplate(college));
-          // imageFile = "";
+          imageFile = "";
           $("#college-form").trigger("reset");
           alert("Successfully added");
           
@@ -289,7 +292,7 @@ $(function() {
           url: base_url + "college/" + id ,
           data: college,
           success: function(college) {
-            imageFile = "";
+            // imageFile = "";
             location.reload();
             alert("successfully edited");
           },
@@ -298,6 +301,64 @@ $(function() {
           }
         });
       // }      
+    });
+
+    $("#login").on("click", function() {
+      if($("#username").val() ===""){
+        alert("Please enter your username");
+      }else if($("#password").val() ===""){
+        alert("Please enter your password");
+      }else{
+        let user = {
+          username :$("#username").val(),
+          password :$("#password").val()
+        };
+        $.ajax({
+          type: "POST",
+          url: base_url + "users/login",
+          data: user,
+          success: function(user) {
+            alert("You are logged in " + user.firstname);
+          
+           if(user.admin == true){
+             localStorage.setItem("admin", user._id);
+             window.location = 'admin.html';
+           }
+           else{
+            localStorage.setItem("user", user._id);
+            window.location = 'dashboard.html';
+            
+           }
+          },
+          error: function() {
+            alert("Invalid username or password");
+          }
+        });
+      }
+    });
+
+    $("#register").on("click", function(e) {
+      let user = {
+        firstname: $("#fname").val(),
+        lastname: $("#lname").val(),
+        email: $("#email").val(),
+        username: $("#uname").val(),
+        password: $("#pass").val()
+      };
+      console.log(user);
+      $.ajax({
+        type: "POST",
+        url: base_url + "users/signup",
+        data: user,
+        success: function(user) {
+          alert("successfully registered");
+          console.log(user);
+        },
+        error: function() {
+          alert("couldn't register");
+        }
+      });
+      // alert("Successfully registered");
     });
   });
   

@@ -135,6 +135,7 @@ $(function() {
         success: function(user) {
           alert("successfully registered");
           console.log(user);
+          window.location = './login.html';
         },
         error: function() {
           alert("couldn't register");

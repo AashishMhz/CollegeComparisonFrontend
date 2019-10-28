@@ -181,7 +181,7 @@ $(function() {
   
     $("#logout").on("click", function() {
       if (confirm("Do you really want to logout?")) {
-        localStorage.setItem("user","");
+        localStorage.setItem("admin","");
       window.location = 'home.html';
       }
     });
